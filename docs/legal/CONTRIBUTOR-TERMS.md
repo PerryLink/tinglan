@@ -8,7 +8,7 @@
 - 仓库私有；`git log` 192 commits 全部为 PerryLink（**可重许可**的前提之一，须保留证据）。
 - `CONTRIBUTING.md` 要求：接受 `docs/CLA.md` + `git commit -s`（DCO 式 sign-off）。
 - 代码许可：PolyForm NC 1.0.0（源可见，非 OSI 开源）；商业版/DLC 为专有 → **需要再许可权**，仅 DCO 不够。
-- 桌宠层 Apache-2.0 目标**未落地**；美术 CC BY-NC-SA 4.0 **草案未生效**。
+- 桌宠层代码 **PolyForm NC 1.0.0**；美术 **CC BY-NC-SA 4.0**（用户 2026-11-16 决定；律师审查暂缓）。
 
 ## 2. 机制选择（待律师拍板）
 
