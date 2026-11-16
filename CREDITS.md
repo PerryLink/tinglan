@@ -2,7 +2,7 @@
 
 > **状态：DRAFT（草案）— 待用户（PerryLink）+ 律师确认。** 快照：2026-11-15。
 > 本文件不是法律意见；许可条款以 `LICENSE`（代码，现状 PolyForm Noncommercial 1.0.0）、
-> `LICENSE-ART`（Orca OC 美术，CC BY-NC-SA 4.0 草案）、`THIRD-PARTY.md`（第三方）为准。
+> `LICENSE-ART`（Orca OC/桌宠美术，CC BY-NC-SA 4.0；用户 2026-11-16 决定，律师暂缓）、`THIRD-PARTY.md`（第三方）为准。
 > 在 `LICENSE-ART` 正式生效前，Orca OC 美术仍按内部草案（保留所有权利）处理。
 
 ## 1. 项目与作者
@@ -76,7 +76,7 @@
 
 | 资产 | 位置（当前） | 来源/生成方式 | 许可 | 可发布？ |
 |---|---|---|---|---|
-| Orca OC 概念/正常头身/设定图/变体/蓝虎鲸重设计/修订版 | `<private-path>`（仓外） | AI 生成（`openai/gpt-image-2.6-sunburst` via OpenRouter Images API，2026-11-14/15）+ 作者筛选/提示词迭代；参考图仅 Orca 自产图 | `LICENSE-ART` CC BY-NC-SA 4.0（草案） | 待用户 + 律师 + 相似度审查后 |
+| Orca OC 概念/正常头身/设定图/变体/蓝虎鲸重设计/修订版 | `<private-path>`（仓外） | AI 生成（`openai/gpt-image-2.6-sunburst` via OpenRouter Images API，2026-11-14/15）+ 作者筛选/提示词迭代；参考图仅 Orca 自产图 | `LICENSE-ART` CC BY-NC-SA 4.0 | 用户 2026-11-16 决定；律师暂缓；CC0 部分见 ASSET-LICENSES |
 | Orca 像素化 CharacterPack | `<private-path>`、`pack-orca-128-custom\`（仓外） | 本地确定性像素化管线（`pixelize` / `ai_hero_pipeline*`，无新 AI 调用） | 同上（改编产物） | 同上 |
 | Orca 蓝虎鲸调色版 | `<private-path>`（仓外） | 本地确定性调色（`blue_orca_grade.py`，无新 AI 调用） | 同上（改编产物） | 同上 |
 | 桌宠占位 CharacterPack（cat/dog/pearl） | `public/assets/pet/*-placeholder/`（tracked，108 PNG） | `scripts/placehold.py` 确定性渲染（无图像模型） | 本项目占位素材（placeholder-only，非最终美术） | 可随开发版；发布前替换/标注 |
