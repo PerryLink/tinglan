@@ -6,8 +6,8 @@ Status: **DRAFT — 用户已要求拟制；律师审查暂缓（用户 2026-11-
 
 本条款覆盖 Famling/汀岚（及后续角色）项目内由 DeepSeek TTS（`stella` / `tide` 音色）生成的语音文件、缓存、字幕文本与相关元数据，包括：
 
-- `assets/voice/pet/*.wav`（18 个内部占位 WAV，再分发条款未确认）；
-- 未来 `assets/voice/tinglan/*` 等 baked voice；
+- `public/assets/voice/pet/*.wav`（18 个内部占位 WAV，再分发条款未确认）；
+- 未来 `public/assets/voice/tinglan/*` 等 baked voice；
 - 运行时通过 `voice`/`audio[]` 声明的语音资产；
 - 用户自行用其 API Key 生成的语音缓存。
 
