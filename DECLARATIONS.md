@@ -1,13 +1,18 @@
 # DECLARATIONS — 声明总入口
 
-Status: **DRAFT（2026-11-15）**。本文件把项目的许可、内容边界、DLC/插件、二创、AI、商标、安全与举报声明集中索引；具体条款以各文件为准，冲突时按 [docs/legal/README.md](docs/legal/README.md) 的优先级处理。**不是法律意见；对外发布前必须经用户与律师确认。**
+Status: **用户已决定核心许可（2026-11-16）；律师审查暂缓。** 本文件把项目的许可、内容边界、DLC/插件、二创、AI、商标、安全与举报声明集中索引；具体条款以各文件为准，冲突时按 [docs/legal/README.md](docs/legal/README.md) 的优先级处理。**不是法律意见。**
+
+## 0. 公开仓
+
+- 桌宠公开仓：<https://github.com/PerryLink/tinglan>（角色/素材/接口子集；完整游戏基座保持私有）
+- Advisers 独立仓：<https://github.com/PerryLink/advisers>（独立核心，不随桌宠发布）
 
 ## 1. 核心声明
 
 | 场景 | 声明 | 位置 |
 |---|---|---|
-| 仓库代码 | PolyForm Noncommercial 1.0.0（底座）；桌宠层目标 Apache-2.0 | [LICENSE](LICENSE) · [NOTICE](NOTICE) · [LICENSE-COMMERCIAL.md](LICENSE-COMMERCIAL.md) |
-| 角色美术/设定（汀岚/Orca OC） | **CC BY-NC-SA 4.0 草案**（待律师/相似度审查后生效） | [LICENSE-ART](LICENSE-ART) |
+| 仓库代码 | PolyForm Noncommercial 1.0.0（底座/桌宠代码）；公开桌宠仓仅含角色/素材/接口子集 | [LICENSE](LICENSE) · [NOTICE](NOTICE) · [LICENSE-COMMERCIAL.md](LICENSE-COMMERCIAL.md) |
+| 角色美术/设定（汀岚/Orca OC） | **CC BY-NC-SA 4.0**（用户 2026-11-16 决定；非商业 + 同协议 + 署名；律师审查暂缓） | [LICENSE-ART](LICENSE-ART) |
 | TTS / 语音资产 | 自带 key、费用自担、AI 披露、禁克隆/未授权音源、未确认不随包 | [docs/legal/TTS-TERMS.md](docs/legal/TTS-TERMS.md) |
 | AI 生成/来源 | 必须披露；保留 provenance；不冒充真人/官方 | [AI-PROVENANCE.md](AI-PROVENANCE.md) · [docs/legal/AI-CONTENT-POLICY.md](docs/legal/AI-CONTENT-POLICY.md) |
 | 第三方素材 | 逐项登记；未确认不得发布 | [THIRD-PARTY.md](THIRD-PARTY.md) · [CREDITS.md](CREDITS.md) |
@@ -16,7 +21,9 @@ Status: **DRAFT（2026-11-15）**。本文件把项目的许可、内容边界�
 | 角色名/商标/非官方 | 汀岚/Orca/留屿园/Famling/折角 使用边界；禁止抢注/冒充 | [docs/legal/TRADEMARK-AND-NAMING-POLICY.md](docs/legal/TRADEMARK-AND-NAMING-POLICY.md) |
 | 贡献者 | DCO/CLA、AI 辅助披露、无担保 | [docs/legal/CONTRIBUTOR-TERMS.md](docs/legal/CONTRIBUTOR-TERMS.md) |
 | 侵权/违规举报 | 材料、下架、反通知、联系方式占位 | [TAKEDOWN.md](TAKEDOWN.md) · [docs/legal/TAKEDOWN-AND-REPORTING.md](docs/legal/TAKEDOWN-AND-REPORTING.md) |
+| AI 拟人化/roleplay 强制提醒 | 非真人、非专业、18+、防依赖、2h 提醒、危机转介、TTS 标识 | [docs/legal/TTS-TERMS.md](docs/legal/TTS-TERMS.md) §8 |
 | 隐私/安全 | 本地数据、记忆/语音、遥测 opt-in、漏洞披露 | [SECURITY.md](SECURITY.md) · [docs/legal/SECURITY-AND-PRIVACY.md](docs/legal/SECURITY-AND-PRIVACY.md) |
+| AI 拟人化互动合规 | 身份披露、未成年人、防沉迷、情感依赖、危机转介、2h 提醒、roleplay 边界 | [docs/research/AI-COMPANION-REGULATION-2026-11-16.md](docs/research/AI-COMPANION-REGULATION-2026-11-16.md) · [docs/TINGLAN-ROLEPLAY-VALUES-2026-11-16.md](docs/TINGLAN-ROLEPLAY-VALUES-2026-11-16.md) |
 | 完整矩阵 | 22 场景 × 适用声明 × 展示位置 × 是否需律师 | [docs/legal/DECLARATION-MATRIX.md](docs/legal/DECLARATION-MATRIX.md) |
 | 二创开发接口 | 动作/声音/形象/行为/UI 替换、L1/L2/L3 扩展、模板 | [docs/modding/README.md](docs/modding/README.md) |
 | 角色包接口 v0.3 | voice/idle/zones/responses/audio 声明；汀岚示例 | [docs/CHARACTER-INTERFACE-V0.3.md](docs/CHARACTER-INTERFACE-V0.3.md) · [public/characters/tinglan/README.md](public/characters/tinglan/README.md) |
@@ -50,7 +57,7 @@ Status: **DRAFT（2026-11-15）**。本文件把项目的许可、内容边界�
 
 ## 6. 待办
 
-- 用户/律师确认 CC BY-NC-SA 4.0 + AI 可版权性 + 相似度 + 商标；去掉 DRAFT 前不对外称“已生效”。
+- 用户已定 CC BY-NC-SA 4.0；律师审查暂缓；不对外称“律师已确认”。
 - TTS 18 个 WAV 的再分发条款确认；`art/assets.csv` 6 行 TBD 清零。
-- 联系方式占位 `<contact-TBD>` 替换为真实渠道；建立举报/下架流程。
+- 联系方式已为 `novelnexusai@outlook.com`；举报/下架流程已建。
 - 发布包内置本索引与 `docs/legal/README.md`（安装器资源已含 NOTICE；后续补 docs/legal 摘要）。
