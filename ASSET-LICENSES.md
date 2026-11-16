@@ -1,14 +1,16 @@
 # 桌宠素材许可清单（2026-11-16）
 
-用户决定：**桌宠素材统一按 CC BY-NC-SA 4.0 分发；部分素材作者已在 Pixiv 事先声明 CC0（仅部分，具体清单待作者补全）。**
+用户决定：**桌宠素材统一按 CC BY-NC-SA 4.0 分发；部分汀岚素材作者已在 Pixiv 事先声明 CC0（仅部分）。**
+
+**CC0 来源（用户 2026-11-16 明确）**：<https://www.pixiv.net/users/131049875> 的相关美术素材，暂时**只有汀岚**这一角色的素材；猫/狗/人型/UI 不在此 CC0 范围。具体帖子/文件清单仍待作者补齐。CC0 不可撤回；本仓库对桌宠包按 NC-SA 分发，但下游仍可依原 CC0 主张权利。
 
 | 资产 | 当前位置 | 当前声明 | 备注 |
 |---|---|---|---|
-| 汀岚角色定义/行为/台词 | `public/characters/tinglan/*` | CC BY-NC-SA 4.0（角色文本/设定） | 尚无 final 美术/音频 |
+| 汀岚角色定义/行为/台词 | `public/characters/tinglan/*` | CC BY-NC-SA 4.0（角色文本/设定） | 尚无 final 美术/音频；**部分美术 CC0（Pixiv 131049875，待逐文件映射）** |
 | 猫/狗/珍珠占位包 | `public/assets/pet/*-placeholder/` | placeholder-only；桌宠包内按 CC BY-NC-SA 4.0 分发 | 程序化占位，不是 final art |
 | 其他 `public/characters/*` | `public/characters/` | 各 `character.json.license` / README | 以文件声明为准 |
-| 18 个 TTS WAV | `assets/voice/pet/` | **未确认；不随生产包分发** | 见 `docs/legal/TTS-TERMS.md` |
-| 第三方参考图/同人 | `art/_private-reference/refs/` | **禁止发布** | gitignored |
+| 18 个 TTS WAV | `public/assets/voice/pet/` | **未确认；不随生产包分发** | 见 `docs/legal/TTS-TERMS.md` |
+| 第三方参考图/同人 | `art/_placeholder/refs/` | **禁止发布** | gitignored |
 | 代码 | `src/**` | PolyForm Noncommercial 1.0.0 | 非 OSI 开源；商业需书面许可 |
 | 游戏基座 | 私有仓/私有目录 | 不随桌宠公开仓发布 | 保持私有 |
 
