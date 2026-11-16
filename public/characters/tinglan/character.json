@@ -39,7 +39,7 @@
     "pixelated": true
   },
   "behaviorFile": "behavior.json",
-  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART)",
+  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART; placeholder-only if art not final)",
   "meta": {
     "authors": [
       "Famling"
