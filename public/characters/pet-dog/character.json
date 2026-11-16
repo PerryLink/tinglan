@@ -38,7 +38,7 @@
   "palette": "dog-placeholder@0.1",
   "packBase": "/assets/pet/dog-placeholder/",
   "behaviorFile": "behavior.json",
-  "license": "placeholder-only: deterministic placeholder art (scripts/gen-pet-placeholder.py) + default behaviour; not final art; commercial use not granted",
+  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART; placeholder-only if art not final)",
   "meta": {
     "authors": [
       "Famling"
