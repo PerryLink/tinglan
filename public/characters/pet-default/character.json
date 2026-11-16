@@ -1,0 +1,81 @@
+{
+  "spec": "famling.character",
+  "apiVersion": "0.1",
+  "id": "famling.pet-default",
+  "version": "0.1.0",
+  "type": "pet",
+  "species": "cat",
+  "traits": [
+    "quadruped",
+    "feline",
+    "tail"
+  ],
+  "canvas": [
+    96,
+    96
+  ],
+  "anchor": {
+    "x": 48,
+    "y": 96,
+    "mode": "foot-center"
+  },
+  "footBox": [
+    -36,
+    -18,
+    72,
+    18
+  ],
+  "bbox": [
+    12,
+    8,
+    72,
+    84
+  ],
+  "palette": "pearl-pixel@0.1",
+  "behaviorFile": "behavior.json",
+  "license": "placeholder-only (art pending; behaviour default only)",
+  "meta": {
+    "authors": [
+      "Famling"
+    ],
+    "note": "Default pet profile (cat-like, behaviour-only). Art packs now exist as separate characters: famling.pet-cat (/assets/pet/cat-placeholder/) and famling.pet-dog (/assets/pet/dog-placeholder/); this document stays render-less and is used for behaviour/interface tests.",
+    "artStatus": "pending"
+  },
+  "ai": {
+    "status": "none"
+  },
+  "capabilities": {
+    "sockets": [
+      "head",
+      "back",
+      "paw",
+      "floor"
+    ],
+    "roles": [
+      "pet"
+    ],
+    "behaviors": [
+      "social",
+      "holdable",
+      "aware"
+    ]
+  },
+  "fallback": {
+    "rub": [
+      "idle"
+    ],
+    "meow": [
+      "idle"
+    ],
+    "nudge": [
+      "meow",
+      "idle"
+    ],
+    "play": [
+      "idle"
+    ],
+    "sleep": [
+      "idle"
+    ]
+  }
+}

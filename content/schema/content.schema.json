@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://perrylink.dev/desktop-games/content.schema.json",
+  "title": "Desktop Games content pack",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": { "type": "array", "items": { "$ref": "#/$defs/item" } },
+    "crops": { "type": "array", "items": { "$ref": "#/$defs/crop" } },
+    "buildings": { "type": "array", "items": { "$ref": "#/$defs/building" } },
+    "fish": { "type": "array", "items": { "$ref": "#/$defs/fish" } },
+    "decorations": { "type": "array", "items": { "$ref": "#/$defs/decor" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[A-Za-z0-9._-]+$" },
+    "nameKey": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "price"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nameKey": { "$ref": "#/$defs/nameKey" },
+        "kind": { "enum": ["seed", "crop", "material"] },
+        "price": { "type": "number", "minimum": 0 }
+      }
+    },
+    "crop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "stages", "stageMs", "wateredMultiplier", "seed", "yieldItem", "yieldQty"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nameKey": { "$ref": "#/$defs/nameKey" },
+        "stages": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "stageMs": { "type": "integer", "minimum": 100 },
+        "wateredMultiplier": { "type": "number", "minimum": 1, "maximum": 10 },
+        "seed": { "$ref": "#/$defs/id" },
+        "yieldItem": { "$ref": "#/$defs/id" },
+        "yieldQty": { "type": "integer", "minimum": 1, "maximum": 100 }
+      }
+    },
+    "building": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "cost"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nameKey": { "$ref": "#/$defs/nameKey" },
+        "cost": { "type": "number", "minimum": 0 },
+        "produces": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["item", "qty", "everyMs"],
+          "properties": {
+            "item": { "$ref": "#/$defs/id" },
+            "qty": { "type": "integer", "minimum": 1, "maximum": 100 },
+            "everyMs": { "type": "integer", "minimum": 1000 }
+          }
+        }
+      }
+    },
+    "decor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "price"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nameKey": { "$ref": "#/$defs/nameKey" },
+        "price": { "type": "number", "minimum": 0 }
+      }
+    },
+    "fish": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "rarity", "waitMinMs", "waitMaxMs", "reelWindowMs", "item"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nameKey": { "$ref": "#/$defs/nameKey" },
+        "rarity": { "enum": ["common", "rare", "legendary"] },
+        "waitMinMs": { "type": "integer", "minimum": 0 },
+        "waitMaxMs": { "type": "integer", "minimum": 0 },
+        "reelWindowMs": { "type": "integer", "minimum": 100 },
+        "item": { "$ref": "#/$defs/id" }
+      }
+    }
+  }
+}

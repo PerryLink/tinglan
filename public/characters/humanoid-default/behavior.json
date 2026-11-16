@@ -1,0 +1,130 @@
+{
+  "profile": "famling.behavior/0.1",
+  "version": "0.1.0",
+  "extends": "core:humanoid",
+  "defaults": {
+    "priority": 10,
+    "interrupt": "at-end",
+    "cooldownMs": 0
+  },
+  "abilities": {
+    "speech": "voice",
+    "reminder": true,
+    "needs": false,
+    "death": false,
+    "multiObject": true
+  },
+  "slots": {
+    "idle": "idle",
+    "pat": "pat",
+    "drag": "drag",
+    "land": "land",
+    "talk": "talk",
+    "remind": "remind",
+    "sleep": "sleep"
+  },
+  "states": {
+    "idle": {
+      "tag": "idle",
+      "loop": true,
+      "priority": 0
+    },
+    "pat": {
+      "tag": "pat",
+      "priority": 50,
+      "after": "idle"
+    },
+    "drag": {
+      "tag": "drag",
+      "loop": true,
+      "priority": 100
+    },
+    "land": {
+      "tag": "land",
+      "priority": 90,
+      "after": "idle"
+    },
+    "talk": {
+      "tag": "talk",
+      "loop": true,
+      "priority": 60,
+      "after": "idle"
+    },
+    "remind": {
+      "tag": "remind",
+      "priority": 80,
+      "after": "idle"
+    },
+    "sleep": {
+      "tag": "sleep",
+      "loop": true,
+      "priority": 10
+    }
+  },
+  "rules": [
+    {
+      "on": "pat",
+      "to": "pat",
+      "priority": 50,
+      "cooldownMs": 3000,
+      "probability": 1.0
+    },
+    {
+      "on": "drag.start",
+      "to": "drag",
+      "priority": 100
+    },
+    {
+      "on": "drag.end",
+      "to": "land",
+      "priority": 90
+    },
+    {
+      "on": "land",
+      "to": "land",
+      "priority": 90
+    },
+    {
+      "on": "talk",
+      "to": "talk",
+      "priority": 60
+    },
+    {
+      "on": "remind",
+      "to": "remind",
+      "priority": 80
+    },
+    {
+      "on": "sleep",
+      "to": "sleep",
+      "priority": 10
+    },
+    {
+      "on": "wake",
+      "to": "idle",
+      "priority": 20
+    }
+  ],
+  "ambient": {
+    "intervalMs": [
+      8000,
+      15000
+    ],
+    "choices": [
+      {
+        "state": "idle",
+        "weight": 5
+      },
+      {
+        "state": "talk",
+        "weight": 1
+      }
+    ]
+  },
+  "speech": {
+    "lines": {
+      "pat.1": "嗯，我在。",
+      "remind.1": "该做下一件事了。"
+    }
+  }
+}

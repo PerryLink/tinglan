@@ -1,0 +1,578 @@
+{
+  "spec": "famling.character",
+  "apiVersion": "0.3",
+  "id": "famling.tinglan",
+  "version": "0.1.0",
+  "type": "humanoid",
+  "species": "orca",
+  "traits": [
+    "orca",
+    "secretary",
+    "biped",
+    "glasses",
+    "tail"
+  ],
+  "canvas": [
+    128,
+    128
+  ],
+  "anchor": {
+    "x": 64,
+    "y": 128,
+    "mode": "foot-center"
+  },
+  "footBox": [
+    -48,
+    -24,
+    96,
+    24
+  ],
+  "bbox": [
+    16,
+    11,
+    112,
+    123
+  ],
+  "palette": "orca-pixel@0.2",
+  "display": {
+    "scale": 2,
+    "pixelated": true
+  },
+  "behaviorFile": "behavior.json",
+  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART)",
+  "meta": {
+    "authors": [
+      "Famling"
+    ],
+    "note": "Tinglan behavior/voice definition; 128 Q art and baked voice pending. Not final art.",
+    "artStatus": "pending",
+    "voiceStatus": "pending",
+    "nameStatus": "working"
+  },
+  "ai": {
+    "status": "concept",
+    "tool": "documentation only; no image/audio generated for this pack"
+  },
+  "capabilities": {
+    "sockets": [
+      "head",
+      "hand",
+      "tablet",
+      "tail",
+      "floor"
+    ],
+    "roles": [
+      "assistant",
+      "companion"
+    ],
+    "behaviors": [
+      "social",
+      "aware"
+    ]
+  },
+  "voice": {
+    "profile": "voice.tinglan.calm",
+    "tts": false,
+    "language": "zh-CN",
+    "provider": "none",
+    "lines": "voice-lines.json",
+    "lineIds": {
+      "scene.enter": "greet_a",
+      "pat.head": "pat_a",
+      "pat.hand": "hand_a",
+      "pat.tail": "tail_a",
+      "drag.end": "land_a",
+      "reminder.due": "remind_a"
+    },
+    "timbre": {
+      "presetId": "stella-calm",
+      "pitch": 0.98,
+      "rate": 0.95,
+      "volume": 0.8,
+      "style": "calm"
+    }
+  },
+  "idle": {
+    "main": "idle",
+    "variants": [
+      {
+        "tag": "glasses",
+        "weight": 14,
+        "intervalMs": [
+          60000,
+          180000
+        ],
+        "priority": 5,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "read",
+        "weight": 18,
+        "intervalMs": [
+          60000,
+          120000
+        ],
+        "priority": 5,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "write",
+        "weight": 10,
+        "intervalMs": [
+          120000,
+          240000
+        ],
+        "priority": 4,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "look_out",
+        "weight": 8,
+        "intervalMs": [
+          120000,
+          240000
+        ],
+        "priority": 3,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "stretch",
+        "weight": 6,
+        "intervalMs": [
+          180000,
+          300000
+        ],
+        "priority": 2,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "yawn",
+        "weight": 4,
+        "intervalMs": [
+          180000,
+          300000
+        ],
+        "priority": 2,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ],
+          "timeOfDay": [
+            "night",
+            "late_night"
+          ]
+        }
+      },
+      {
+        "tag": "tail_flick",
+        "weight": 7,
+        "intervalMs": [
+          120000,
+          240000
+        ],
+        "priority": 3,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "read",
+        "weight": 6,
+        "intervalMs": [
+          300000,
+          600000
+        ],
+        "priority": 4,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ],
+          "timeOfDay": [
+            "morning"
+          ]
+        }
+      },
+      {
+        "tag": "write",
+        "weight": 5,
+        "intervalMs": [
+          300000,
+          600000
+        ],
+        "priority": 4,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ],
+          "timeOfDay": [
+            "afternoon"
+          ]
+        }
+      },
+      {
+        "tag": "daze",
+        "weight": 12,
+        "intervalMs": [
+          90000,
+          180000
+        ],
+        "priority": 1,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "tie_adjust",
+        "weight": 4,
+        "intervalMs": [
+          180000,
+          360000
+        ],
+        "priority": 3,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "tap_tablet",
+        "weight": 5,
+        "intervalMs": [
+          180000,
+          360000
+        ],
+        "priority": 3,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      },
+      {
+        "tag": "idle_away",
+        "weight": 3,
+        "intervalMs": [
+          180000,
+          360000
+        ],
+        "priority": 2,
+        "interruptible": true,
+        "when": {
+          "state": [
+            "idle"
+          ]
+        }
+      }
+    ]
+  },
+  "zones": [
+    {
+      "id": "head",
+      "role": "head",
+      "space": "normalized",
+      "shape": {
+        "type": "rect",
+        "x": 0.25,
+        "y": 0.05,
+        "w": 0.5,
+        "h": 0.3
+      },
+      "on": "pat.head",
+      "state": "pat",
+      "cursor": "pointer",
+      "label": "轻点头"
+    },
+    {
+      "id": "glasses",
+      "role": "glasses",
+      "space": "normalized",
+      "shape": {
+        "type": "rect",
+        "x": 0.4,
+        "y": 0.16,
+        "w": 0.2,
+        "h": 0.08
+      },
+      "on": "pat.glasses",
+      "state": "pat",
+      "cursor": "pointer",
+      "label": "扶眼镜"
+    },
+    {
+      "id": "hand_tablet",
+      "role": "tablet",
+      "space": "normalized",
+      "shape": {
+        "type": "rect",
+        "x": 0.24,
+        "y": 0.38,
+        "w": 0.32,
+        "h": 0.22
+      },
+      "on": "pat.tablet",
+      "state": "pat_hand",
+      "cursor": "pointer",
+      "label": "护住平板"
+    },
+    {
+      "id": "tail",
+      "role": "tail",
+      "space": "normalized",
+      "shape": {
+        "type": "rect",
+        "x": 0.74,
+        "y": 0.52,
+        "w": 0.2,
+        "h": 0.18
+      },
+      "on": "pat.tail",
+      "state": "pat_tail",
+      "cursor": "pointer",
+      "label": "尾巴"
+    },
+    {
+      "id": "floor",
+      "role": "other",
+      "space": "normalized",
+      "shape": {
+        "type": "rect",
+        "x": 0.3,
+        "y": 0.85,
+        "w": 0.4,
+        "h": 0.15
+      },
+      "on": "drag.start",
+      "cursor": "grab",
+      "label": "拖拽"
+    }
+  ],
+  "responses": [
+    {
+      "on": "pat.head",
+      "voiceLineId": "pat_a",
+      "durationMs": 2000,
+      "priority": 50
+    },
+    {
+      "on": "pat.hand",
+      "voiceLineId": "hand_a",
+      "durationMs": 2000,
+      "priority": 55
+    },
+    {
+      "on": "pat.tail",
+      "voiceLineId": "tail_a",
+      "durationMs": 2000,
+      "priority": 55
+    },
+    {
+      "on": "drag.end",
+      "voiceLineId": "land_a",
+      "durationMs": 2500,
+      "priority": 70
+    },
+    {
+      "on": "reminder.due",
+      "voiceLineId": "remind_a",
+      "durationMs": 3200,
+      "priority": 80,
+      "requiresAny": [
+        "brief"
+      ]
+    },
+    {
+      "on": "break.remind",
+      "voiceLineId": "break_a",
+      "durationMs": 3200,
+      "priority": 40
+    },
+    {
+      "on": "x-famling.pat.spam",
+      "voiceLineId": "refuse_a",
+      "durationMs": 2000,
+      "priority": 70
+    },
+    {
+      "on": "scene.enter",
+      "voiceLineId": "greet_a",
+      "durationMs": 3200,
+      "priority": 40
+    },
+    {
+      "on": "hover.dwell",
+      "emote": "look_out",
+      "durationMs": 1500,
+      "priority": 5
+    },
+    {
+      "on": "pat.tablet",
+      "voiceLineId": "tablet_a",
+      "durationMs": 3200,
+      "priority": 55
+    }
+  ],
+  "moods": {
+    "default": "calm",
+    "defs": {
+      "calm": {
+        "label": "平静",
+        "valence": 0.1,
+        "arousal": 0.2,
+        "emote": "idle"
+      },
+      "focused": {
+        "label": "专注",
+        "valence": 0.1,
+        "arousal": 0.5,
+        "state": "focus"
+      },
+      "pleased": {
+        "label": "认可",
+        "valence": 0.6,
+        "arousal": 0.3,
+        "emote": "pleased"
+      },
+      "concerned": {
+        "label": "担心",
+        "valence": -0.2,
+        "arousal": 0.5,
+        "emote": "concerned"
+      },
+      "tired": {
+        "label": "疲惫",
+        "valence": -0.1,
+        "arousal": 0.1,
+        "state": "stretch"
+      }
+    }
+  },
+  "focus": {
+    "default": 30,
+    "min": 0,
+    "max": 100,
+    "decayPerHour": 4,
+    "restingState": "stretch"
+  },
+  "timeOfDay": {
+    "periods": [
+      {
+        "id": "morning",
+        "from": "06:00",
+        "to": "12:00"
+      },
+      {
+        "id": "afternoon",
+        "from": "12:00",
+        "to": "18:00"
+      },
+      {
+        "id": "evening",
+        "from": "18:00",
+        "to": "23:00"
+      },
+      {
+        "id": "night",
+        "from": "23:00",
+        "to": "23:59"
+      },
+      {
+        "id": "late_night",
+        "from": "00:00",
+        "to": "06:00"
+      }
+    ]
+  },
+  "schedule": {
+    "segments": [
+      {
+        "id": "morning",
+        "from": "06:00",
+        "to": "09:00",
+        "state": "idle",
+        "mood": "calm"
+      },
+      {
+        "id": "work-am",
+        "from": "09:00",
+        "to": "12:00",
+        "state": "focus",
+        "mood": "focused"
+      },
+      {
+        "id": "lunch",
+        "from": "12:00",
+        "to": "14:00",
+        "state": "read",
+        "mood": "calm"
+      },
+      {
+        "id": "work-pm",
+        "from": "14:00",
+        "to": "18:00",
+        "state": "focus",
+        "mood": "focused"
+      },
+      {
+        "id": "evening",
+        "from": "18:00",
+        "to": "23:00",
+        "state": "idle",
+        "mood": "calm"
+      },
+      {
+        "id": "night-a",
+        "from": "23:00",
+        "to": "23:59",
+        "state": "sleep",
+        "mood": "tired"
+      },
+      {
+        "id": "night-b",
+        "from": "00:00",
+        "to": "06:00",
+        "state": "sleep",
+        "mood": "tired"
+      }
+    ]
+  },
+  "render": {
+    "format": "pixel-hero"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "profile": "famling.behavior/0.1",
+  "version": "0.1.0",
+  "extends": "core:pet.dog",
+  "defaults": {
+    "priority": 10,
+    "interrupt": "at-end",
+    "cooldownMs": 0
+  },
+  "abilities": {
+    "speech": "sfx",
+    "reminder": true,
+    "care": {
+      "feed": true,
+      "play": true,
+      "sleep": true
+    },
+    "needs": true,
+    "death": false,
+    "multiObject": true
+  },
+  "slots": {
+    "idle": "idle",
+    "pat": "rub",
+    "drag": "drag",
+    "land": "land",
+    "talk": "bark",
+    "remind": "nudge",
+    "sleep": "sleep",
+    "feed": "play",
+    "play": "play"
+  },
+  "states": {
+    "idle": {
+      "tag": "idle",
+      "loop": true,
+      "priority": 0
+    },
+    "rub": {
+      "tag": "pat",
+      "priority": 50,
+      "after": "idle"
+    },
+    "drag": {
+      "tag": "drag",
+      "loop": true,
+      "priority": 100
+    },
+    "land": {
+      "tag": "land",
+      "priority": 90,
+      "after": "idle"
+    },
+    "bark": {
+      "tag": "talk",
+      "priority": 40,
+      "after": "idle"
+    },
+    "nudge": {
+      "tag": "remind",
+      "priority": 80,
+      "after": "idle",
+      "cooldownMs": 60000
+    },
+    "play": {
+      "tag": "pat",
+      "priority": 55,
+      "after": "idle"
+    },
+    "sleep": {
+      "tag": "sleep",
+      "loop": true,
+      "priority": 10
+    }
+  },
+  "rules": [
+    {
+      "on": "pat",
+      "to": "rub",
+      "priority": 50,
+      "cooldownMs": 1200,
+      "probability": 1.0
+    },
+    {
+      "on": "feed",
+      "to": "play",
+      "priority": 55
+    },
+    {
+      "on": "play",
+      "to": "play",
+      "priority": 60
+    },
+    {
+      "on": "talk",
+      "to": "bark",
+      "priority": 45
+    },
+    {
+      "on": "remind",
+      "to": "nudge",
+      "priority": 80,
+      "requiresBrief": false
+    },
+    {
+      "on": "drag.start",
+      "to": "drag",
+      "priority": 100
+    },
+    {
+      "on": "land",
+      "to": "land",
+      "priority": 90
+    },
+    {
+      "on": "sleep",
+      "to": "sleep",
+      "priority": 10
+    },
+    {
+      "on": "wake",
+      "to": "idle",
+      "priority": 20
+    }
+  ],
+  "ambient": {
+    "intervalMs": [
+      4000,
+      10000
+    ],
+    "choices": [
+      {
+        "state": "idle",
+        "weight": 4
+      },
+      {
+        "state": "play",
+        "weight": 2
+      },
+      {
+        "state": "sleep",
+        "weight": 1
+      }
+    ]
+  },
+  "needs": {
+    "hunger": {
+      "value": 50,
+      "max": 100,
+      "decayPerHour": 5,
+      "criticalAt": 15
+    },
+    "energy": {
+      "value": 65,
+      "max": 100,
+      "decayPerHour": 4,
+      "criticalAt": 15
+    },
+    "fun": {
+      "value": 55,
+      "max": 100,
+      "decayPerHour": 6,
+      "criticalAt": 15
+    }
+  },
+  "speech": {
+    "lines": {
+      "bark.1": "汪！",
+      "bark.2": "（尾巴摇成了螺旋桨）",
+      "rub.1": "（把脑袋塞进你手心）",
+      "nudge.1": "（用鼻尖拱了拱你的手）",
+      "play.1": "（叼来一个纸团）",
+      "sleep.1": "（趴在你脚边睡着了）"
+    }
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "profile": "famling.behavior/0.1",
+  "version": "0.1.0",
+  "extends": "core:humanoid",
+  "defaults": {
+    "priority": 10,
+    "interrupt": "at-end",
+    "cooldownMs": 0
+  },
+  "abilities": {
+    "speech": "text",
+    "reminder": true,
+    "needs": false,
+    "death": false,
+    "multiObject": true
+  },
+  "slots": {
+    "idle": "idle",
+    "pat": "pat",
+    "talk": "talk",
+    "remind": "remind",
+    "sleep": "sleep"
+  },
+  "states": {
+    "idle": {
+      "tag": "idle",
+      "loop": true,
+      "priority": 0,
+      "category": "idle"
+    },
+    "focus": {
+      "tag": "focus",
+      "loop": true,
+      "priority": 25,
+      "interrupt": "at-end",
+      "after": "idle",
+      "timeoutMs": 600000,
+      "category": "expression"
+    },
+    "read": {
+      "tag": "read",
+      "loop": true,
+      "priority": 15,
+      "interrupt": "at-end",
+      "after": "idle",
+      "timeoutMs": 30000,
+      "category": "micro-idle"
+    },
+    "talk": {
+      "tag": "talk",
+      "loop": true,
+      "priority": 60,
+      "interrupt": "at-end",
+      "after": "idle",
+      "category": "expression"
+    },
+    "remind": {
+      "tag": "remind",
+      "priority": 80,
+      "interrupt": "immediate",
+      "after": "idle",
+      "cooldownMs": 60000,
+      "category": "reaction"
+    },
+    "pat": {
+      "tag": "pat",
+      "priority": 50,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 3000,
+      "category": "reaction"
+    },
+    "pat_hand": {
+      "tag": "pat_hand",
+      "priority": 55,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 6000,
+      "category": "reaction"
+    },
+    "pat_tail": {
+      "tag": "pat_tail",
+      "priority": 55,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 8000,
+      "category": "reaction"
+    },
+    "drag": {
+      "tag": "drag",
+      "loop": true,
+      "priority": 100,
+      "interrupt": "immediate",
+      "category": "interaction"
+    },
+    "land": {
+      "tag": "land",
+      "priority": 90,
+      "interrupt": "immediate",
+      "after": "idle",
+      "cooldownMs": 1000,
+      "category": "reaction"
+    },
+    "startle": {
+      "tag": "startle",
+      "priority": 95,
+      "interrupt": "immediate",
+      "after": "drag",
+      "cooldownMs": 10000,
+      "category": "reaction"
+    },
+    "sleep": {
+      "tag": "sleep",
+      "loop": true,
+      "priority": 10,
+      "interrupt": "never",
+      "category": "sleep"
+    },
+    "wake": {
+      "tag": "wake",
+      "priority": 40,
+      "interrupt": "immediate",
+      "after": "idle",
+      "cooldownMs": 5000,
+      "category": "reaction"
+    },
+    "stretch": {
+      "tag": "stretch",
+      "priority": 5,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 30000,
+      "category": "reaction"
+    },
+    "refuse": {
+      "tag": "refuse",
+      "priority": 70,
+      "interrupt": "immediate",
+      "after": "idle",
+      "cooldownMs": 20000,
+      "category": "reaction"
+    },
+    "look_out": {
+      "tag": "look_out",
+      "priority": 5,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 15000,
+      "category": "reaction"
+    },
+    "tablet_show": {
+      "tag": "tablet_show",
+      "priority": 55,
+      "interrupt": "at-end",
+      "after": "idle",
+      "cooldownMs": 6000,
+      "category": "reaction"
+    }
+  },
+  "rules": [
+    {
+      "on": "scene.enter",
+      "to": "wake",
+      "priority": 40
+    },
+    {
+      "on": "wake",
+      "to": "wake",
+      "priority": 40,
+      "voiceLineId": "greet_a"
+    },
+    {
+      "on": "pat.head",
+      "to": "pat",
+      "priority": 50,
+      "probability": 0.95,
+      "voiceLineId": "pat_a"
+    },
+    {
+      "on": "pat.body",
+      "to": "pat",
+      "priority": 50,
+      "probability": 0.9
+    },
+    {
+      "on": "pat.hand",
+      "to": "pat_hand",
+      "priority": 55,
+      "probability": 0.95,
+      "voiceLineId": "hand_a"
+    },
+    {
+      "on": "pat.tablet",
+      "to": "tablet_show",
+      "priority": 55,
+      "probability": 0.9,
+      "voiceLineId": "tablet_a"
+    },
+    {
+      "on": "pat.tail",
+      "to": "pat_tail",
+      "priority": 55,
+      "probability": 0.95,
+      "voiceLineId": "tail_a"
+    },
+    {
+      "on": "pat.glasses",
+      "to": "pat",
+      "priority": 50,
+      "probability": 0.75
+    },
+    {
+      "on": "x-famling.pat.spam",
+      "to": "refuse",
+      "priority": 70,
+      "probability": 1.0,
+      "voiceLineId": "refuse_a"
+    },
+    {
+      "on": "drag.fast",
+      "to": "startle",
+      "priority": 95,
+      "probability": 0.9
+    },
+    {
+      "on": "drag.start",
+      "to": "drag",
+      "priority": 100
+    },
+    {
+      "on": "drag.end",
+      "to": "land",
+      "priority": 90
+    },
+    {
+      "on": "land",
+      "to": "land",
+      "priority": 90,
+      "probability": 0.92,
+      "voiceLineId": "land_a"
+    },
+    {
+      "on": "hover.dwell",
+      "to": "look_out",
+      "priority": 5
+    },
+    {
+      "on": "brief.working",
+      "to": "focus",
+      "priority": 25
+    },
+    {
+      "on": "brief.waiting",
+      "to": "read",
+      "priority": 15
+    },
+    {
+      "on": "reminder.due",
+      "to": "remind",
+      "priority": 80,
+      "requiresBrief": true,
+      "voiceLineId": "remind_a"
+    },
+    {
+      "on": "break.remind",
+      "to": "stretch",
+      "priority": 5,
+      "voiceLineId": "break_a"
+    },
+    {
+      "on": "talk",
+      "to": "talk",
+      "priority": 60
+    },
+    {
+      "on": "sleep",
+      "to": "sleep",
+      "priority": 10
+    },
+    {
+      "on": "wake.from_sleep",
+      "to": "wake",
+      "priority": 40,
+      "probability": 0.8
+    }
+  ],
+  "ambient": {
+    "intervalMs": [
+      45000,
+      120000
+    ],
+    "choices": [
+      {
+        "state": "idle",
+        "weight": 8
+      },
+      {
+        "state": "read",
+        "weight": 3
+      },
+      {
+        "state": "look_out",
+        "weight": 2
+      },
+      {
+        "state": "stretch",
+        "weight": 1
+      }
+    ]
+  },
+  "speech": {
+    "lines": {
+      "ack": "嗯。"
+    }
+  }
+}

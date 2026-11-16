@@ -1,0 +1,79 @@
+{
+  "spec": "famling.character",
+  "apiVersion": "0.1",
+  "id": "famling.humanoid-default",
+  "version": "0.1.0",
+  "type": "humanoid",
+  "species": "humanoid",
+  "traits": [
+    "biped",
+    "speech",
+    "work-companion"
+  ],
+  "canvas": [
+    96,
+    96
+  ],
+  "anchor": {
+    "x": 48,
+    "y": 96,
+    "mode": "foot-center"
+  },
+  "footBox": [
+    -36,
+    -18,
+    72,
+    18
+  ],
+  "bbox": [
+    12,
+    8,
+    72,
+    84
+  ],
+  "palette": "pearl-pixel@0.1",
+  "display": {
+    "scale": 2,
+    "pixelated": true
+  },
+  "packBase": "/assets/pet/pearl-placeholder/",
+  "behaviorFile": "behavior.json",
+  "license": "placeholder-only (see pack; not cleared for release)",
+  "meta": {
+    "authors": [
+      "Famling"
+    ],
+    "note": "Default humanoid profile (Pearl-like). Art pack is the deterministic placeholder; 128 migration is pending.",
+    "artStatus": "placeholder"
+  },
+  "ai": {
+    "status": "none"
+  },
+  "capabilities": {
+    "sockets": [
+      "head",
+      "hand",
+      "floor"
+    ],
+    "roles": [
+      "companion",
+      "assistant"
+    ],
+    "behaviors": [
+      "social",
+      "aware"
+    ]
+  },
+  "fallback": {
+    "talk": [
+      "idle"
+    ],
+    "remind": [
+      "talk",
+      "idle"
+    ],
+    "pat": [
+      "idle"
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "profile": "famling.voice-lines/0.1",
+  "version": "0.1.0",
+  "lines": {
+    "greet_a": {
+      "text": "早。今天先做哪件？",
+      "lang": "zh-CN"
+    },
+    "greet_b": {
+      "text": "回来了。进度我记着。",
+      "lang": "zh-CN"
+    },
+    "pat_a": {
+      "text": "嗯。",
+      "lang": "zh-CN"
+    },
+    "pat_b": {
+      "text": "一下就好。",
+      "lang": "zh-CN"
+    },
+    "pat_c": {
+      "text": "头别碰。文件在。",
+      "lang": "zh-CN"
+    },
+    "hand_a": {
+      "text": "手。",
+      "lang": "zh-CN"
+    },
+    "hand_b": {
+      "text": "别碰平板。",
+      "lang": "zh-CN"
+    },
+    "tail_a": {
+      "text": "尾巴，别碰。",
+      "lang": "zh-CN"
+    },
+    "tail_b": {
+      "text": "……我注意到了。",
+      "lang": "zh-CN"
+    },
+    "drag_a": {
+      "text": "放我下来。",
+      "lang": "zh-CN"
+    },
+    "drag_b": {
+      "text": "抓着领子不合适。",
+      "lang": "zh-CN"
+    },
+    "land_a": {
+      "text": "站稳了。",
+      "lang": "zh-CN"
+    },
+    "land_b": {
+      "text": "下次先打个招呼。",
+      "lang": "zh-CN"
+    },
+    "remind_a": {
+      "text": "有几件今天到期。",
+      "lang": "zh-CN"
+    },
+    "remind_b": {
+      "text": "有几件事待看。",
+      "lang": "zh-CN"
+    },
+    "remind_c": {
+      "text": "这个我没记。",
+      "lang": "zh-CN"
+    },
+    "brief_off": {
+      "text": "还没连上账本。",
+      "lang": "zh-CN"
+    },
+    "work_a": {
+      "text": "我在。你忙你的。",
+      "lang": "zh-CN"
+    },
+    "work_b": {
+      "text": "先做哪件，你定。",
+      "lang": "zh-CN"
+    },
+    "break_a": {
+      "text": "歇十分钟。",
+      "lang": "zh-CN"
+    },
+    "time_a": {
+      "text": "整点了。",
+      "lang": "zh-CN"
+    },
+    "time_b": {
+      "text": "该收了。",
+      "lang": "zh-CN"
+    },
+    "refuse_a": {
+      "text": "不。",
+      "lang": "zh-CN"
+    },
+    "refuse_b": {
+      "text": "别闹。",
+      "lang": "zh-CN"
+    },
+    "ack_a": {
+      "text": "嗯。",
+      "lang": "zh-CN"
+    },
+    "greet_c": {
+      "text": "先做哪个？",
+      "lang": "zh-CN"
+    },
+    "pat_d": {
+      "text": "在听。",
+      "lang": "zh-CN"
+    },
+    "hand_c": {
+      "text": "等下。",
+      "lang": "zh-CN"
+    },
+    "tail_c": {
+      "text": "别拽。",
+      "lang": "zh-CN"
+    },
+    "drag_c": {
+      "text": "轻点。",
+      "lang": "zh-CN"
+    },
+    "land_c": {
+      "text": "到了。",
+      "lang": "zh-CN"
+    },
+    "work_c": {
+      "text": "按顺序来。",
+      "lang": "zh-CN"
+    },
+    "time_c": {
+      "text": "快收工了。",
+      "lang": "zh-CN"
+    },
+    "tablet_a": {
+      "text": "日程在第 3 条。",
+      "lang": "zh-CN"
+    },
+    "ack_b": {
+      "text": "好。",
+      "lang": "zh-CN"
+    },
+    "refuse_c": {
+      "text": "停。",
+      "lang": "zh-CN"
+    }
+  }
+}

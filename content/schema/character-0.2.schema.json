@@ -1,0 +1,1004 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://perrylink.dev/famling/character-0.2.schema.json",
+  "title": "Famling Character Interface (FCI) 0.2 character document",
+  "description": "Author/CI JSON Schema for FCI 0.2 character documents (content/schema + characters/<id>/character.json). Mirrors src/pet/character/types.ts. v0.2 adds the optional render block (format must be a host-registered renderer format; registration is semantic, not schema-checked), version negotiation (apiVersion MAJOR.MINOR window) and minRuntime; v0.1 documents remain valid under character-0.1.schema.json. render.format is optional in the schema for migration only: new v0.2 packs must declare it and scripts/validate-character.mjs enforces that under --strict. Data-only: character packs never carry executable hooks; any script/scripts/eval/code/execute/permissions key is rejected at any nesting depth inside free-form metadata. Semantic checks (behaviour targets, tag coverage, fallbacks, pack assets/pixels, renderer registration) live in scripts/validate-character.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spec",
+    "apiVersion",
+    "id",
+    "version",
+    "type",
+    "canvas",
+    "anchor",
+    "footBox"
+  ],
+  "propertyNames": {
+    "not": {
+      "enum": [
+        "script",
+        "scripts",
+        "eval",
+        "code",
+        "execute",
+        "permissions"
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "behavior"
+      ]
+    },
+    {
+      "required": [
+        "behaviorFile"
+      ]
+    }
+  ],
+  "properties": {
+    "spec": {
+      "description": "Document kind marker.",
+      "const": "famling.character"
+    },
+    "apiVersion": {
+      "description": "MAJOR.MINOR interface version; this schema describes 0.2. Runtime negotiation: MAJOR exact + MINOR window (0.1..0.2).",
+      "const": "0.2"
+    },
+    "id": {
+      "description": "Globally unique character id, lowercase dotted/hyphenated.",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$"
+    },
+    "version": {
+      "description": "Content semver of the character pack.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "type": {
+      "description": "humanoid | pet | object (behaviour differences live in the behaviour profile, not the type).",
+      "enum": [
+        "humanoid",
+        "pet",
+        "object"
+      ]
+    },
+    "species": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "traits": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 32
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scale": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "pixelated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "canvas": {
+      "description": "Runtime canvas [width,height] in art pixels.",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 512
+        },
+        {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 512
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "anchor": {
+      "description": "Anchor point in canvas coordinates; mode is a semantic name such as foot-center.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "mode"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "mode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
+    },
+    "footBox": {
+      "description": "[x,y,w,h] relative to the anchor; w/h must be positive.",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "bbox": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "palette": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "tags": {
+      "description": "Inline animation tags; alternatively supplied by the packBase pack manifest.",
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/tag"
+      }
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "packBase": {
+      "description": "Base location of a hero.ts-compatible pack directory (manifest.json + frames). Relative paths resolve from the character directory; /assets/... resolves under public/.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "behavior": {
+      "$ref": "#/$defs/behaviorProfile"
+    },
+    "behaviorFile": {
+      "description": "Relative path (inside the character directory) of a separate famling.behavior/0.1 file.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "license": {
+      "description": "SPDX identifier or explicit placeholder licence note.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "meta": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/notForbiddenKey"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/freeData"
+      }
+    },
+    "ai": {
+      "description": "Famling AI provenance policy field.",
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "concept",
+            "final"
+          ]
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/freeData"
+      }
+    },
+    "fallback": {
+      "description": "Tag degradation map: tag -> ordered alternative tags. Chains must be acyclic and at most 3 hops deep.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 8,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sockets": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+          }
+        },
+        "roles": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+          }
+        },
+        "behaviors": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "social",
+              "holdable",
+              "carryable",
+              "mountable",
+              "aware"
+            ]
+          }
+        }
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "on",
+          "actors"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "on": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "actors": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        }
+      }
+    },
+    "render": {
+      "description": "Renderer selection. format must name a host-registered renderer format (built-in: pixel-hero | pixel-micro | hd-chibi; future first-party plugins add live2d-model3/spine-json etc.; unknown formats are rejected by the runtime/validator). New v0.2 packs must declare it; absent here only for migration inference (validator CLIs enforce it under --strict). params is data-only and may be validated against the renderer plugin paramsSchema.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format"
+      ],
+      "properties": {
+        "format": {
+          "description": "Coarse pack data-format family, not a plugin id: packs may only select a format the host registered.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "params": {
+          "description": "Backend-specific renderer parameters (data-only; JSON Schema-shaped free data).",
+          "$ref": "#/$defs/freeData"
+        }
+      }
+    },
+    "minRuntime": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "extensions": {
+      "description": "Explicit namespace extensions; data-only.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/notForbiddenKey"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/freeData"
+      }
+    },
+    "extensionsRequired": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      }
+    },
+    "expressions": {
+      "description": "Reserved expression channel (documented in docs/CHARACTER-INTERFACE.md; not yet consumed by the 0.1 runtime). Data-only.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/notForbiddenKey"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/freeData"
+      }
+    },
+    "sounds": {
+      "description": "Reserved event->audio map (documented in docs/CHARACTER-INTERFACE.md; not yet consumed by the 0.1 runtime). Data-only.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/notForbiddenKey"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/freeData"
+      }
+    }
+  },
+  "$defs": {
+    "forbiddenKeys": {
+      "enum": [
+        "script",
+        "scripts",
+        "eval",
+        "code",
+        "execute",
+        "permissions"
+      ]
+    },
+    "notForbiddenKey": {
+      "not": {
+        "$ref": "#/$defs/forbiddenKeys"
+      }
+    },
+    "freeData": {
+      "description": "Arbitrary JSON data that must stay data-only (forbidden keys rejected recursively).",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/freeData"
+          }
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/notForbiddenKey"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/freeData"
+          }
+        }
+      ]
+    },
+    "tag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frames",
+        "fps",
+        "loop"
+      ],
+      "properties": {
+        "frames": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "fps": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "category": {
+          "enum": [
+            "idle",
+            "reaction",
+            "locomotion",
+            "face",
+            "fx"
+          ]
+        },
+        "offsets": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "priority": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "next": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "interruptMode": {
+      "enum": [
+        "immediate",
+        "at-end",
+        "never"
+      ]
+    },
+    "guardInput": {
+      "enum": [
+        "mood",
+        "bond",
+        "hunger",
+        "energy",
+        "fun"
+      ]
+    },
+    "guard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input",
+        "op",
+        "value"
+      ],
+      "properties": {
+        "input": {
+          "$ref": "#/$defs/guardInput"
+        },
+        "op": {
+          "enum": [
+            ">=",
+            "<=",
+            "==",
+            "!="
+          ]
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    },
+    "behaviorState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tag"
+      ],
+      "properties": {
+        "tag": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "interrupt": {
+          "$ref": "#/$defs/interruptMode"
+        },
+        "after": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "cooldownMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "timeoutMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 86400000
+        }
+      }
+    },
+    "behaviorRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "on",
+        "to"
+      ],
+      "properties": {
+        "on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            }
+          ]
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "priority": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "cooldownMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "when": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "secrecyMax": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "guard": {
+          "$ref": "#/$defs/guard"
+        },
+        "say": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "textId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "tone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "voice": {
+              "enum": [
+                "tts",
+                "none"
+              ]
+            }
+          }
+        },
+        "sfx": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "clip"
+          ],
+          "properties": {
+            "clip": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "volume": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "variants": {
+              "type": "array",
+              "maxItems": 8,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            }
+          }
+        },
+        "effects": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bond": {
+              "type": "number"
+            },
+            "mood": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            },
+            "needs": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "requiresBrief": {
+          "type": "boolean"
+        }
+      }
+    },
+    "behaviorNeed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "max",
+        "decayPerHour",
+        "criticalAt"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "max": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000000
+        },
+        "decayPerHour": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "criticalAt": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      }
+    },
+    "behaviorProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "version",
+        "abilities",
+        "states",
+        "rules"
+      ],
+      "properties": {
+        "profile": {
+          "const": "famling.behavior/0.1"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "extends": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "defaults": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "priority": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "interrupt": {
+              "$ref": "#/$defs/interruptMode"
+            },
+            "cooldownMs": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 86400000
+            }
+          }
+        },
+        "abilities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "speech",
+            "reminder"
+          ],
+          "properties": {
+            "speech": {
+              "enum": [
+                "text",
+                "voice",
+                "sfx",
+                "none"
+              ]
+            },
+            "reminder": {
+              "type": "boolean"
+            },
+            "care": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            },
+            "needs": {
+              "type": "boolean"
+            },
+            "death": {
+              "type": "boolean"
+            },
+            "multiObject": {
+              "type": "boolean"
+            }
+          }
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 64
+          }
+        },
+        "states": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/behaviorState"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "$ref": "#/$defs/behaviorRule"
+          }
+        },
+        "ambient": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "intervalMs",
+            "choices"
+          ],
+          "properties": {
+            "intervalMs": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "choices": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "state",
+                  "weight"
+                ],
+                "properties": {
+                  "state": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "weight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "needs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/behaviorNeed"
+          }
+        },
+        "speech": {
+          "type": "object",
+          "properties": {
+            "lines": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            }
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/freeData"
+          }
+        },
+        "mood": {
+          "$ref": "#/$defs/freeData"
+        },
+        "brief": {
+          "$ref": "#/$defs/freeData"
+        },
+        "fallback": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        },
+        "interactions": {
+          "$ref": "#/$defs/freeData"
+        },
+        "overrides": {
+          "$ref": "#/$defs/freeData"
+        }
+      }
+    }
+  }
+}

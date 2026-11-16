@@ -1,0 +1,163 @@
+Desktop Games — NOTICE
+
+Copyright (c) 2026 PerryLink contributors
+
+Required Notice: Copyright (c) 2026 PerryLink contributors
+
+Status: DRAFT (2026-11-15) — pending confirmation by the project owner (PerryLink)
+and legal counsel. This NOTICE is a draft, not legal advice, and must not be quoted
+as an approved or effective licensing statement. See docs/LEGAL-STATUS-2026-11-15.md.
+
+-------------------------------------------------------------------------------
+1. Code license (baseline repository)
+-------------------------------------------------------------------------------
+
+The source code in this repository is licensed under the PolyForm Noncommercial
+License 1.0.0 (see LICENSE). Commercial use requires a separate written license
+(see LICENSE-COMMERCIAL.md). This is source-available, NOT OSI open source.
+
+The desktop-pet / Famling layer is intended to be licensed under Apache-2.0 in
+its own repository; that relicensing has NOT been completed in this repository
+and is not granted by this NOTICE. Do not describe this repository as
+"Apache-2.0" or as "open source".
+
+-------------------------------------------------------------------------------
+2. Orca OC art and setting materials (draft)
+-------------------------------------------------------------------------------
+
+Orca OC is an original character by PerryLink (working name; final character and
+product names are not decided).
+
+Intended license: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0),
+SPDX identifier CC-BY-NC-SA-4.0. Draft terms, scope and exclusions are in LICENSE-ART
+(not yet effective; pending user and counsel confirmation).
+
+This licence allows noncommercial sharing and adaptation only, with attribution,
+an indication of modifications, and ShareAlike (derivatives under the same
+licence). **Commercial use is not allowed** without a separate written licence.
+CC BY-NC-SA 4.0 is irrevocable once applied. The owner decided on 2026-11-16 to
+use it for pet art; legal review is deferred, so this remains a project
+declaration rather than a lawyer-approved opinion. AI-generated images: copyrightability is uncertain in China, the US
+and the EU; attribution is a license condition only to the extent copyright
+applies. Provenance is recorded in AI-PROVENANCE.md; attribution examples are in
+CREDITS.md.
+
+Orca OC art is currently kept outside this repository (<private-path>); no Orca OC image
+is tracked in git as of 2026-11-15.
+
+-------------------------------------------------------------------------------
+3. Names, logos, trademarks (not licensed)
+-------------------------------------------------------------------------------
+
+No trademark, service mark, trade name, domain name or logo rights are granted
+under this repository or under LICENSE-ART. "Orca" is NOT cleared for use as a
+product name, app/store name, repository name, npm package name, domain or
+trademark: public search (2026-11-15 snapshot, not an official trademark search)
+found an earlier Chinese class-42 registration "ORCA" (registration no. 37783319),
+other ORCA / BABY ORCA marks, a similarly named AI product (stablyai/orca), and
+registered orca.* domains. See docs/LEGAL-STATUS-2026-11-15.md §4.
+
+"Orca OC" may be used as a descriptive character reference only, with the
+non-official statement in section 7 and without implying endorsement. Any public
+product name must be chosen after an official trademark search and legal review.
+
+Do not use DeepSeek logos, wordmarks, favicons, the official fish mark, or the
+official whale-girl mascot. Do not describe this project as "official",
+"partner", "authorized", "official mascot", or "DeepSeek".
+
+-------------------------------------------------------------------------------
+4. Third-party components
+-------------------------------------------------------------------------------
+
+See THIRD-PARTY.md for the full inventory and open items. Main components
+(not exhaustive; see lockfiles for exact versions):
+
+- cordis — MIT — https://github.com/cordiverse/cordis
+- pixi.js — MIT — https://github.com/pixijs/pixijs
+- Tauri — MIT or Apache-2.0 — https://github.com/tauri-apps/tauri
+- steamworks-rs — MIT or Apache-2.0 — https://github.com/Noxime/steamworks-rs
+- Vite — MIT — https://github.com/vitejs/vite
+- TypeScript — Apache-2.0 — https://github.com/microsoft/TypeScript
+- esbuild — MIT — https://github.com/evanw/esbuild
+
+Other direct dependencies include @sentry/browser (MIT), @tauri-apps/api
+(Apache-2.0 OR MIT), ajv (MIT), electron (MIT), fake-indexeddb (Apache-2.0),
+tsx (MIT), @types/node (MIT). Rust crates include serde/serde_json (MIT OR
+Apache-2.0), reqwest (MIT OR Apache-2.0), base64 (MIT OR Apache-2.0),
+windows-sys (MIT OR Apache-2.0), ed25519-dalek (BSD-3-Clause), sha2 (MIT OR
+Apache-2.0), plus their transitive dependencies from Cargo.lock.
+
+Bundled OS/runtime components: Electron builds must ship Electron/Chromium
+license notices (LICENSES.chromium.html or equivalent) if Electron is
+distributed. The Tauri build uses the system WebView2 runtime on Windows; do not
+bundle WebView2 unless its terms are checked.
+
+The Steamworks SDK is proprietary to Valve and is not included in this
+repository. It must not be committed or distributed with public builds.
+
+The Voice pilot audio under assets/voice/pet/ is output of the DeepSeek
+TTS API (voice "stella"); its redistribution/commercial terms must be confirmed
+with the provider before shipping as final voice (see THIRD-PARTY.md §2).
+
+-------------------------------------------------------------------------------
+5. Excluded assets (not distributed / not licensed here)
+-------------------------------------------------------------------------------
+
+- Pearl / 溟月-chain materials: Pearl AI drafts and the runtime placeholder pack
+  public/assets/pet/pearl-placeholder/ are internal placeholders only. The Pearl
+  character chain is associated with CC BY-NC-SA 4.0 upstream terms
+  (non-commercial, share-alike) and must not be relicensed as CC BY-NC-SA 4.0 or used
+  commercially. Do not publish "Orca is a redesign of Pearl".
+- Community reference images in art/_private-reference/refs/ (gitignored, not
+  distributed). Several are fan art with unknown or non-commercial licenses;
+  they must never be shipped, used in marketing, or uploaded as generation
+  references for release assets.
+- .rustup-win/rustup-init.exe (third-party Rust installer binary) is tracked in
+  this repository by mistake relative to .gitignore; it is not part of the
+  project and should be removed from git tracking (see THIRD-PARTY.md §5).
+- Fonts are not bundled; the app uses the OS font stack (Segoe UI / Microsoft
+  YaHei / ui-* / monospace).
+- Colors themselves are not copyrightable; avoid the external label "DSH blue"
+  and prefer "orca blue / ocean blue".
+
+-------------------------------------------------------------------------------
+6. AI-generated content disclosure
+-------------------------------------------------------------------------------
+
+Orca OC concept art and variants were generated with an AI image model
+(openai/gpt-image-2.6-sunburst via OpenRouter Images API) on 2026-11-14/15 and
+then screened/processed by the author. Voice pilot audio was generated with the
+DeepSeek TTS API (voice "stella") on 2026-11-14. Placeholder sprite packs are
+generated deterministically by scripts (no image model).
+
+AI disclosure is required when publishing: China's AI-generated content labeling
+rules (effective 2025-09-01), DeepSeek platform terms (AI disclosure to end
+users), Steam content survey (pre-generated and live-generated AI), Apple/Google
+store policies where applicable, and EU AI Act Article 50 (applicable from
+2026-08-02). Do not present AI-generated art or voice as human-made or as real
+recordings. The final disclosure plan is pending legal review.
+
+Provenance records: AI-PROVENANCE.md (Orca, Pearl, TTS). Do not include API keys
+in any provenance file.
+
+-------------------------------------------------------------------------------
+7. Unofficial / no affiliation (must be shown on public releases)
+-------------------------------------------------------------------------------
+
+Orca OC is an original character by PerryLink. This is an unofficial project and
+is not affiliated with, endorsed by, or authorized by DeepSeek (深度求索). No
+DeepSeek logos, wordmarks, or official mascots are used.
+
+Orca OC 是 PerryLink 的原创角色。本项目为非官方项目，与 DeepSeek（深度求索）
+无任何关联、合作、授权或背书关系；不使用 DeepSeek 官方 Logo、字标或官方鲸鱼娘
+形象。
+
+-------------------------------------------------------------------------------
+8. Contact / status
+-------------------------------------------------------------------------------
+
+Owner: PerryLink (GitHub repository has no public remote as of 2026-11-15; no
+public contact URL is recorded here). Legal status, open lawyer questions and the
+pre-publication checklist: docs/LEGAL-STATUS-2026-11-15.md.
+
+This NOTICE is a draft (2026-11-15) and is not an approved legal document.

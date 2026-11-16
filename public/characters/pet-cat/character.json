@@ -1,0 +1,80 @@
+{
+  "spec": "famling.character",
+  "apiVersion": "0.1",
+  "id": "famling.pet-cat",
+  "version": "0.1.0",
+  "type": "pet",
+  "species": "cat",
+  "traits": [
+    "quadruped",
+    "feline",
+    "tail"
+  ],
+  "canvas": [
+    96,
+    96
+  ],
+  "anchor": {
+    "x": 48,
+    "y": 96,
+    "mode": "foot-center"
+  },
+  "footBox": [
+    -36,
+    -18,
+    72,
+    18
+  ],
+  "bbox": [
+    12,
+    8,
+    72,
+    84
+  ],
+  "display": {
+    "scale": 2,
+    "pixelated": true
+  },
+  "palette": "cat-placeholder@0.1",
+  "packBase": "/assets/pet/cat-placeholder/",
+  "behaviorFile": "behavior.json",
+  "license": "placeholder-only: deterministic placeholder art (scripts/gen-pet-placeholder.py) + default behaviour; not final art; commercial use not granted",
+  "meta": {
+    "authors": [
+      "Famling"
+    ],
+    "note": "Default cat pet (FCI 0.1): quadruped/rub/meow/nudge/play/sleep. Art pack is a deterministic 96x96 procedural placeholder (36 frames, 7 tags); final art pending. Behaviour states map to pack tags: rub/play->pat, meow->talk, nudge->remind.",
+    "artStatus": "placeholder"
+  },
+  "ai": {
+    "status": "none"
+  },
+  "capabilities": {
+    "sockets": [
+      "head",
+      "back",
+      "paw",
+      "floor"
+    ],
+    "roles": [
+      "pet"
+    ],
+    "behaviors": [
+      "social",
+      "holdable",
+      "aware"
+    ]
+  },
+  "fallback": {
+    "talk": [
+      "idle"
+    ],
+    "remind": [
+      "talk",
+      "idle"
+    ],
+    "pat": [
+      "idle"
+    ]
+  }
+}
