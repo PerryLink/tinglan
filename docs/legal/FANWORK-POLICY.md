@@ -1,6 +1,6 @@
 # 二创政策：同人图/文/视频/直播/周边 — 草案
 
-> **状态：DRAFT · 2026-11-15 · 非法律意见。** 待用户 + 律师确认。**本文不是许可**，也不构成对未发布素材的授权；真正授予使用权的是根目录生效许可（`LICENSE-ART` 拟 CC BY-NC-SA 4.0，**未生效**）。
+> **状态：DRAFT · 2026-11-15 · 非法律意见。** 待用户 + 律师确认。**本文不是许可**；真正授予使用权的是根目录许可（`LICENSE-ART` CC BY-NC-SA 4.0，用户 2026-11-16 决定；律师审查暂缓）。
 > 定位：在不与 CC BY-NC-SA 4.0 冲突的范围内，规定**名称/商标、官方渠道、平台规则、人格权与违法内容**的边界；商业量产/商业授权需另行书面许可（律师审查暂缓，2026-11-16）。
 > 关联：[CONTENT-POLICY](./CONTENT-POLICY.md) · [TRADEMARK-AND-NAMING-POLICY](./TRADEMARK-AND-NAMING-POLICY.md) · [ASSET-REPLACEMENT-AND-MODDING-POLICY](./ASSET-REPLACEMENT-AND-MODDING-POLICY.md) · [TAKEDOWN](./TAKEDOWN-AND-REPORTING.md) · 模板 [TEMPLATES](./DECLARATION-TEMPLATES/TEMPLATES.md)。
 
