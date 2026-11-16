@@ -33,7 +33,7 @@
   ],
   "palette": "pearl-pixel@0.1",
   "behaviorFile": "behavior.json",
-  "license": "placeholder-only (art pending; behaviour default only)",
+  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART; placeholder-only if art not final)",
   "meta": {
     "authors": [
       "Famling"
