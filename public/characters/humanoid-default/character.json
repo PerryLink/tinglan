@@ -38,7 +38,7 @@
   },
   "packBase": "/assets/pet/pearl-placeholder/",
   "behaviorFile": "behavior.json",
-  "license": "placeholder-only (see pack; not cleared for release)",
+  "license": "CC-BY-NC-SA-4.0 (see LICENSE-ART; placeholder-only if art not final)",
   "meta": {
     "authors": [
       "Famling"
