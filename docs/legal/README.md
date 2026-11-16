@@ -11,7 +11,7 @@
 |---|---|---|---|---|
 | L1 | 代码底座 | 内核/游戏/壳/工具 | **PolyForm Noncommercial 1.0.0**（源可见，**不是** OSI 开源；商用需另签） | [CONTRIBUTOR-TERMS](./CONTRIBUTOR-TERMS.md)、根 `LICENSE`/`NOTICE` |
 | L2 | 桌宠层代码 | Famling 桌宠/FCI | **Apache-2.0 目标尚未在本仓落地**（需拍板+版权审计）；不得宣称 | [CONTRIBUTOR-TERMS](./CONTRIBUTOR-TERMS.md)、`NOTICE` §1 |
-| L3 | 美术/设定 | 汀岚（Orca OC）原画、设定、像素包 | **CC BY-NC-SA 4.0 草案**（`LICENSE-ART`，未生效；生效前按保留所有权利处理） | [CONTENT-POLICY](./CONTENT-POLICY.md)、[FANWORK-POLICY](./FANWORK-POLICY.md)、[ASSET-REPLACEMENT-AND-MODDING-POLICY](./ASSET-REPLACEMENT-AND-MODDING-POLICY.md) |
+| L3 | 美术/设定 | 汀岚（Orca OC）原画、设定、像素包 | **CC BY-NC-SA 4.0**（用户 2026-11-16 决定；非商业+同协议；律师审查暂缓） | [CONTENT-POLICY](./CONTENT-POLICY.md)、[FANWORK-POLICY](./FANWORK-POLICY.md)、[ASSET-REPLACEMENT-AND-MODDING-POLICY](./ASSET-REPLACEMENT-AND-MODDING-POLICY.md) |
 | L4 | 音频/语音 | 18 个 TTS WAV、BGM/SFX、实时语音 | TTS 输出再分发条款见 [TTS-TERMS](./TTS-TERMS.md)（DRAFT；律师审查暂缓，用户 2026-11-16 决定；未确认前不随包）；不得随包发未确认音频 | [THIRD-PARTY-AND-CREDITS-POLICY](./THIRD-PARTY-AND-CREDITS-POLICY.md)、[AI-CONTENT-POLICY](./AI-CONTENT-POLICY.md) |
 | L5 | AI 生成内容 | 图/文/语音/对话/宣发 | 中国《标识办法》等 + 平台政策；**标识未落地** | [AI-CONTENT-POLICY](./AI-CONTENT-POLICY.md) |
 | L6 | 名称/Logo/商标 | 产品名、角色名、仓名、包名、域名 | **保留所有权利，不随任何许可授权**；Orca 高风险 | [TRADEMARK-AND-NAMING-POLICY](./TRADEMARK-AND-NAMING-POLICY.md) |
